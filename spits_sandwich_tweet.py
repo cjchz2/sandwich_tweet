@@ -9,7 +9,6 @@ s3_resource = boto3.resource('s3')
 with open('twitter_api_token.txt', 'r') as f:
 	token = f.readline()
 
-#Adding a line!
 #Removing white space/carriage return
 token = token.strip()
 
