@@ -4,7 +4,7 @@ from pytz import timezone
 import psycopg2
 import glob
 
-
+#test
 #Grabbing credentials from a text file so they aren't hardcoded in script.
 credential_list = []
 
