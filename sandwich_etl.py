@@ -4,7 +4,6 @@ from pytz import timezone
 import psycopg2
 import glob
 
-#test
 #Grabbing credentials from a text file so they aren't hardcoded in script.
 credential_list = []
 
@@ -51,7 +50,7 @@ for bucket in s3_bucket.objects.all():
 
 cur = conn.cursor()
 
-file_path_collection = glob.glob('/home/ec2-user/tweet_folder/sandwich_tweet%*')
+file_path_collection = glob.glob('/home/ec2-user/sandwich_tweet%*')
 for file_path in file_path_collection:
 	with open(file_path) as file:
 		try:
