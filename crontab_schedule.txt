@@ -1,0 +1,3 @@
+00 * * * * python3 /home/ec2-user/spits_sandwich_tweet.py
+05 * * * * python3 /home/ec2-user/sandwich_etl.py
+10 * * * * python3 /home/ec2-user/deletes_sandwich.py
