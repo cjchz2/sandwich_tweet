@@ -13,6 +13,10 @@ Skills learned:
 7) Learned the basics of crontab.
 8)
 
+Next changes:
+1) Change python scripts to OOP. Increase modularity.
+2) Create error table.
+
 Next iteration:
 Going to publish a new repository using a streaming software. Either EMR or kafka, might try both for fun. Will use this for the hourly load. 
 Going to add a error table for when rows are not inserted correctly.
