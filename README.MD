@@ -16,7 +16,8 @@ Skills learned:
 Next changes:
 1) Change python scripts to OOP. Increase modularity.
 2) Create error table.
-3) Create a docker image of this first iteration? That way we can quickly see the development.
+3) Create a docker image of this first iteration? That way we can quickly see the development. Experiment with getting this whole setup spun up from scratch, at least the ec2 instance.
+4) read pep8 and make sure you have a consistent style.
 
 Next iteration:
 Going to publish a new repository using a streaming software. Either EMR or kafka, might try both for fun. Will use this for the hourly load. 
