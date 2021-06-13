@@ -18,6 +18,9 @@ Next changes:
 2) Create error table.
 3) Create a docker image of this first iteration? That way we can quickly see the development. Experiment with getting this whole setup spun up from scratch, at least the ec2 instance.
 4) read pep8 and make sure you have a consistent style.
+5) Write unit test with pytest.
+6) Consider incorporating a CI/CD framework?
+
 
 Next iteration:
 Going to publish a new repository using a streaming software. Either EMR or kafka, might try both for fun. Will use this for the hourly load. 
@@ -27,6 +30,8 @@ Going to create an etl process that reloads everything from the previous day.
 Create a viz that helps track the findings in the error table.
 Incorporate airflow?
 Make the website look nicer.
+Consider incorporating multiple servers that can service requests?
+
 
 Things to improve:
 What is the best way to do time comparisons?
