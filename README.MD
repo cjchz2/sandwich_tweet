@@ -25,4 +25,4 @@ What is the best way to do time comparisons?
 
 Notes for you later:
 
-Remember you had to set timezone so current_timestamp() was in the CDT timezone.
+Come up with a better way to do local time conversion on current_timestamp() in POSTGRESQL.
