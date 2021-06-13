@@ -22,3 +22,7 @@ Create a viz that helps track the findings in the error table.
 
 Things to improve:
 What is the best way to do time comparisons?
+
+Notes for you later:
+
+Remember you had to set timezone so current_timestamp() was in the CDT timezone.
