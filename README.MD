@@ -6,3 +6,16 @@ Skills learned:
 
 1) How to do get around in linux.
 2) How to use git to push to a remote repository. How to pull down new versions of the remote repository.
+3) SQL stuff?
+4) Python stuff?
+5) Practiced OOP skills? Originally everything (as of writing now) is written as functions.
+6) Learned how to use HTML a little.
+7) Learned the basics of crontab.
+8)
+
+Next iteration:
+Going to publish a new repository using a streaming software. Either EMR or kafka, might try both for fun. Will use this for the hourly load. 
+Going to add a error table for when rows are not inserted correctly.
+Going to create a partitioned table.
+Going to create an etl process that reloads everything from the previous day.
+Create a viz that helps track the findings in the error table.
