@@ -20,9 +20,11 @@ Next changes:
 Next iteration:
 Going to publish a new repository using a streaming software. Either EMR or kafka, might try both for fun. Will use this for the hourly load. 
 Going to add a error table for when rows are not inserted correctly.
-Going to create a partitioned table.
+Going to create a partitioned table by date.
 Going to create an etl process that reloads everything from the previous day.
 Create a viz that helps track the findings in the error table.
+Incorporate airflow?
+Make the website look nicer.
 
 Things to improve:
 What is the best way to do time comparisons?
