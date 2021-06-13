@@ -19,3 +19,6 @@ Going to add a error table for when rows are not inserted correctly.
 Going to create a partitioned table.
 Going to create an etl process that reloads everything from the previous day.
 Create a viz that helps track the findings in the error table.
+
+Things to improve:
+What is the best way to do time comparisons?
