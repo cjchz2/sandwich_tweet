@@ -8,7 +8,7 @@ Skills learned:
 2) How to use git to push to a remote repository. How to pull down new versions of the remote repository.
 3) SQL stuff?
 4) Python stuff?
-5) Practiced OOP skills? Originally everything (as of writing now) is written as functions.
+5) Practiced OOP skills? Originally everything (as of writing now) is written as functions. Wanted to use the principles of encapsulation and modularity to make code easier to reason about and change.
 6) Learned how to use HTML a little.
 7) Learned the basics of crontab.
 8)
