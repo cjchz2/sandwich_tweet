@@ -20,7 +20,7 @@ Next changes:
 4) read pep8 and make sure you have a consistent style.
 5) Write unit test with pytest.
 6) Consider incorporating a CI/CD framework?
-
+7) Apply indexing that optimize reads?
 
 Next iteration:
 Going to publish a new repository using a streaming software. Either EMR or kafka, might try both for fun. Will use this for the hourly load. 
