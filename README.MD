@@ -31,7 +31,7 @@ Create a viz that helps track the findings in the error table.
 Incorporate airflow?
 Make the website look nicer.
 Consider incorporating multiple servers that can service requests?
-
+Doing some more interesting analysis on the sandwich tweets. Sentiment analysis?
 
 Things to improve:
 What is the best way to do time comparisons?
