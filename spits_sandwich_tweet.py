@@ -34,21 +34,24 @@ def package_sandwich_tweets(response):
     return text_list, user_name_list, tweet_date_str_list, tweet_id_list
 
 response = get_sandwich_tweets()
-text_list, user_name_list, tweet_date_list , tweet_id_list = package_sandwich_tweets(response)
+text_list, user_name_list, tweet_date_list, tweet_id_list = package_sandwich_tweets(response)
 
 print(response.status_code)
 
 #Write output to a .txt file and move it to a s3 bucket
 for i in range(len(text_list)):
-    with open('/home/ec2-user/sandwich_tweet%{dt}%{ident}.txt'.format(dt = tweet_date_list[i],ident = tweet_id_list[i]), mode = 'w') as f:
-        f.write(text_list[i])
+    current_timestamp = datetime.now()
+    with open('/home/ec2-user/sandwich_tweet%{dt}%{ident}.txt'.format(dt = current_timestamp,ident = tweet_id_list[i]), mode = 'w') as f:
+	f.write(tweet_id_list[i])
+	f.write("^&*>*&^")
+	f.write(text_list[i])
         f.write("^&*>*&^")
         f.write(user_name_list[i])
         f.write("^&*>*&^")
         f.write(tweet_date_list[i])
         f.write("^&*>*&^")
-        f.write(tweet_id_list[i])
-    s3_resource.Object('sandwich-tweet-chris-cunningham', 'sandwich_tweet%{dt}%{ident}.txt'.format(dt = tweet_date_list[i],ident = tweet_id_list[i])).upload_file(Filename = '/home/ec2-user/sandwich_tweet%{dt}%{ident}.txt'.format(dt = tweet_date_list[i],ident = tweet_id_list[i]))
+	f.write(current_timestamp)
+    s3_resource.Object('sandwich-tweet-chris-cunningham', 'sandwich_tweet%{dt}%{ident}.txt'.format(dt = current_timestamp,ident = tweet_id_list[i])).upload_file(Filename = '/home/ec2-user/sandwich_tweet%{dt}%{ident}.txt'.format(dt = current_timestamp,ident = tweet_id_list[i]))
 
 
 
