@@ -43,13 +43,9 @@ website_string = """<!DOCTYPE html>
 with open("index.html","w+") as f:
     f.write(website_string)
 
-#s3 = boto3.resource("s3")
-#s3.Bucket("sandwich-website") 
-#bucket.put_object(Key='index.html', Body=website_string, ContentType='text/html')
+s3_resource = boto3.resource("s3")
+s3_resource.Object('sandwich-website', 'index.html')
 
-s3_resource = boto3.resource("s3") 
-s3_resource.Object('sandwich-website', 'index.html').upload_file(Filename = "/home/ec2-user/index.html",ExtraArgs={'ContentType': "text/html", 'ACL': "public-read"})
-
-#client = boto3.client("s3") client.put_object(Body = website_string, Bucket = 
-#"sandwich-website", key = "html.index")
+#client = boto3.client("s3")
+#client.put_object(Body = website_string, Bucket = "sandwich-website", key = "html.index")
 
