@@ -22,6 +22,7 @@ Next changes:
 6) Consider incorporating a CI/CD framework?
 7) Apply indexing that optimize reads?
 8) Create a star schema for this data. A user table and date table namely. User table can have some type 2 and some type 1 changes.
+9) Include dependencies with a requirement.txt file?
 
 Next iteration:
 Going to publish a new repository using a streaming software. Either EMR or kafka, might try both for fun. Will use this for the hourly load. 
