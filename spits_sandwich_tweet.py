@@ -28,7 +28,7 @@ def package_sandwich_tweets(response):
     user_name_encode = [user.encode(encoding = 'ascii', errors = 'ignore') for user in user_name_raw]
     user_name_list = [user.decode(encoding = 'utf-8') for user in user_name_encode]
     tweet_datetime_str=[i['created_at'] for i in response.json()['statuses']]
-    tweet_date_list=[pytz.utc.localize(datetime.strptime(tweet_datetime_str[i],'%a %b %d %H:%M:%S +%f %Y')).astimezone(timezone('US/Central')) for i,j in enumerate(tweet_datetime_str)]
+    tweet_date_list=[datetime.strptime(tweet_datetime_str[i],'%a %b %d %H:%M:%S +%f %Y') for i,j in enumerate(tweet_datetime_str)]
     tweet_date_str_list = [str(i) for i in tweet_date_list]
     tweet_id_list = [str(i['id']) for i in response.json()['statuses']]
     return text_list, user_name_list, tweet_date_str_list, tweet_id_list
@@ -40,18 +40,20 @@ print(response.status_code)
 
 #Write output to a .txt file and move it to a s3 bucket
 for i in range(len(text_list)):
-    current_timestamp = datetime.now()
-    with open('/home/ec2-user/sandwich_tweet%{dt}%{ident}.txt'.format(dt = current_timestamp,ident = tweet_id_list[i]), mode = 'w') as f:
-	f.write(tweet_id_list[i])
-	f.write("^&*>*&^")
-	f.write(text_list[i])
+    date_now = datetime.now().replace(microsecond = 0)
+    date_now_str = str(date_now)
+    with open('/home/ec2-user/sandwich_tweet/sandwich_tweet%{dt}%{ident}.txt'.format(dt = date_now_str, ident = tweet_id_list[i]), mode = 'w') as f:
+        f.write(tweet_id_list[i])
+        print(tweet_id_list[i])
+        f.write("^&*>*&^")
+        f.write(text_list[i])
         f.write("^&*>*&^")
         f.write(user_name_list[i])
         f.write("^&*>*&^")
         f.write(tweet_date_list[i])
         f.write("^&*>*&^")
-	f.write(current_timestamp)
-    s3_resource.Object('sandwich-tweet-chris-cunningham', 'sandwich_tweet%{dt}%{ident}.txt'.format(dt = current_timestamp,ident = tweet_id_list[i])).upload_file(Filename = '/home/ec2-user/sandwich_tweet%{dt}%{ident}.txt'.format(dt = current_timestamp,ident = tweet_id_list[i]))
+        f.write(date_now_str)
+    s3_resource.Object('sandwich-tweet-chris-cunningham', 'sandwich_tweet%{dt}%{ident}.txt'.format(dt = date_now_str,ident = tweet_id_list[i])).upload_file(Filename = '/home/ec2-user/sandwich_tweet/sandwich_tweet%{dt}%{ident}.txt'.format(dt = date_now_str, ident = tweet_id_list[i]), ExtraArgs = {'ContentType':'text/plan'})
 
 
 
