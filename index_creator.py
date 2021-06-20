@@ -18,7 +18,7 @@ conn = psycopg2.connect(database = "sandwich_tweets",
 	host = "sandwich-tweets.cxors8ly0k2i.us-east-2.rds.amazonaws.com", 
 	port = "5432" )
 
-sql_statement = """SELECT TEXT,DATE_TWEETED FROM SANDWICH_TWEETS.TWEETS WHERE DATE_TWEETED = (SELECT MAX(DATE_TWEETED) FROM SANDWICH_TWEETS.TWEETS)"""
+sql_statement = """SELECT TEXT,TWEET_DATE FROM SANDWICH_TWEETS.TWEETS WHERE INSERT_DATE = (SELECT MAX(INSERT_DATE) FROM SANDWICH_TWEETS.TWEETS)"""
 
 cur = conn.cursor()
 
@@ -44,7 +44,9 @@ with open("index.html","w+") as f:
     f.write(website_string)
 
 s3_resource = boto3.resource("s3")
-s3_resource.Object('sandwich-website', 'index.html')
+s3_resource.Object("sandwich-website", "index.html").upload_file("index.html", ExtraArgs = {"ContentType":"application/html"})
+
+
 
 #client = boto3.client("s3")
 #client.put_object(Body = website_string, Bucket = "sandwich-website", key = "html.index")
