@@ -1,7 +1,7 @@
 import requests
 import boto3
 from datetime import datetime
-import pytz
+#import pytz
 
 s3_resource = boto3.resource('s3')
 
@@ -45,11 +45,14 @@ class tweet_grabber:
         self.tweet_date_str_list = tweet_date_str_list
         self.tweet_id_list = tweet_id_list
 
-    def write_tweets_to_s3(self, local_file_path, bucket_name):
+    def write_tweets_to_s3(self, local_file_path, bucket_name): 
+        file_name = self.tweet_topic + "%{dt}%{ident}".format(dt = date_now_str,
+                                                              ident = self.tweet_id_list[i] + ".txt")
+        full_file_path = local_file_path + file_name
         for i in range(len(self.text_list)):
             date_now = datetime.now().replace(microsecond = 0)
             date_now_str = str(date_now)
-            file_name = self.tweet_topic + "%{dt}%ident".format(dt = date_now_str, ident = self.tweet_id_list[i])
+            file_name = self.tweet_topic + "%{dt}%{ident}".format(dt = date_now_str, ident = self.tweet_id_list[i]) + ".txt"
             full_file_path =  local_file_path + file_name
             with open(full_file_path, mode = 'w') as f:
                 f.write(self.tweet_id_list[i])
@@ -58,19 +61,20 @@ class tweet_grabber:
                 f.write("^&*>*&^")
                 f.write(self.user_name_list[i])
                 f.write("^&*>*&^")
-                f.write(self.tweet_date_list[i])
+                f.write(self.tweet_date_str_list[i])
                 f.write("^&*>*&^")
                 f.write(date_now_str)
+        #Put new .txt file into s3 bucket.
         s3_obj = s3_resource.Object(bucket_name, file_name)
         s3_obj.upload_file(Filename = full_file_path, ExtraArgs = {'ContentType':'text/plan'})
 
 
 
 
-file_path = '/home/ec2-user/sandwich_tweet_v2/sandwich_tweet'
-bucket_name = 'sandwich-tweet-chris-cunningham'
-
-sandwich_tweet_grabber = tweet_grabber(token, 'sandwich')
-sandwich_tweet_grabber.auth_and_call()
-sandwich_tweet.tweet_cleaning()
-sandwich_tweet.write_tweets_to_s3(file, bucket_name)
+#file_path = '/home/ec2-user/sandwich_tweet_v2/sandwich_tweet'
+#bucket_name = 'sandwich-tweet-chris-cunningham'
+#
+#sandwich_tweet_grabber = tweet_grabber(token, 'sandwich')
+#sandwich_tweet_grabber.auth_and_call()
+#sandwich_tweet_grabber.tweet_cleaning()
+#sandwich_tweet_grabber.write_tweets_to_s3(file_path, bucket_name)
